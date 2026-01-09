@@ -1,0 +1,4 @@
+eventId,recurrentInterval,recurrentTimes,recurrentEndDate
+1,1d,7,0
+2,1w,5,0
+3,1w,0,2026-12-31

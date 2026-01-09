@@ -1,0 +1,19 @@
+#EVENTS
+eventId,title,description,startDateTime,endDateTime
+1,A,AAAA,2026-01-09T12:00,2026-01-09T14:00
+2,B,BBB,2026-02-12T03:30,2026-02-12T10:00
+
+#RECURRENT
+eventId,recurrentInterval,recurrentTimes,recurrentEndDate
+1,1w,0,2026-12-31
+2,1d,7,0
+
+#ADDITIONAL
+eventId,Location,Catagory
+1,Mosque,Religion
+2,Study Area,Education
+
+#REMINDERS
+eventId,minutesBefore
+1,60
+2,30
