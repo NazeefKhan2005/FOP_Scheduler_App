@@ -45,7 +45,17 @@ public class EventFileHandler {
     }
 
     public static void writeEvents(List<Event> events) {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(FILE_PATH))) {
+        try {
+            // 1. Target the file
+            File file = new File(FILE_PATH);
+            
+            // 2. FORCE create the "data" folder if it's missing
+            if (file.getParentFile() != null) {
+                file.getParentFile().mkdirs();
+            }
+
+            // 3. Write to the file
+            PrintWriter pw = new PrintWriter(new FileWriter(file));
             pw.println("eventId,title,description,startDateTime,endDateTime");
 
             for (Event e : events) {
@@ -57,10 +67,14 @@ public class EventFileHandler {
                     e.getEndDateTime()
                 );
             }
+            pw.close(); // Don't forget to close!
+
         } catch (IOException e) {
+            System.out.println("Error saving events: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 
     public static int getNextEventId(List<Event> events) {
         int max = 0;

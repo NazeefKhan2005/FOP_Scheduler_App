@@ -238,4 +238,25 @@ public class CalendarView {
             return null;
         }
     }
+
+    public static void showDayView(List<Event> events, LocalDate date) {
+        System.out.println("\n=== Schedule for " + date + " ===");
+
+        // We treat a "Day View" as a "Week View" that just starts and ends on the same day.
+        List<Event> dailyEvents = withRecurringOccurrences(events, date, date);
+        
+        // Sort them by time so morning events show first
+        dailyEvents.sort((e1, e2) -> e1.getStartDateTime().compareTo(e2.getStartDateTime()));
+
+        if (dailyEvents.isEmpty()) {
+            System.out.println("  No events planned for today.");
+        } else {
+            for (Event e : dailyEvents) {
+                System.out.println("  [" + e.getStartDateTime().toLocalTime() + " - " + 
+                                   e.getEndDateTime().toLocalTime() + "] " + 
+                                   e.getTitle());
+            }
+        }
+        System.out.println();
+    }
 }
