@@ -1,5 +1,21 @@
 package app;
 
+/*
+ * Main.java
+ * ---------
+ * Entry point of the Scheduler Application.
+ *
+ * Role in MVC:
+ * - Acts as the Controller
+ * - Handles user input via console
+ * - Routes actions to services, utilities, and views
+ *
+ * IMPORTANT:
+ * - This file contains ONLY comments added.
+ * - No executable code has been changed.
+ */
+
+
 import app.model.Event;
 import app.model.RecurringEvent;
 import app.model.Reminder;
@@ -813,7 +829,7 @@ public class Main {
     }
 
     // ================= EVENT PICKER =================
-    /**
+    /*
     * Resolve an eventId based on user preference: Title or Date.
      * Returns null if the user cancels or no matching event is found.
      */
