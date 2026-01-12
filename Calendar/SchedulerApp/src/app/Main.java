@@ -116,8 +116,9 @@ public class Main {
     private static void viewMenu() {
         System.out.println("""
                 View menu:
-                1. Week calendar
-                2. Month calendar
+                1. Day calendar
+                2. Week calendar
+                3. Month calendar
                 """);
         int choice;
         try {
@@ -129,10 +130,25 @@ public class Main {
         }
 
         switch (choice) {
-            case 1 -> viewWeek();
-            case 2 -> viewMonth();
+            case 1 -> viewDay();
+            case 2 -> viewWeek();
+            case 3 -> viewMonth();
             default -> System.out.println("Invalid choice.");
         }
+    }
+
+    private static void viewDay() {
+        LocalDate date;
+        try {
+            System.out.print("Enter date (yyyy-MM-dd): "); // e.g., 2026-01-11
+            date = LocalDate.parse(sc.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+            return;
+        }
+
+        List<Event> events = EventFileHandler.readEvents();
+        CalendarView.showDayView(events, date);
     }
 
     private static void backupMenu() {
